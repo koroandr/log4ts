@@ -8,3 +8,7 @@ export enum LogLevel {
     FATAL,
     OFF
 }
+
+export function logLevelToString(level: LogLevel): string {
+    return LogLevel[level];
+}
