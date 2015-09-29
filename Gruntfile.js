@@ -10,9 +10,9 @@ module.exports = function(grunt) {
         },
         clean: ['src/**/*.js', 'src/**/*.js.map', 'test/**/*.js', 'test/**/*.js.map'],
         jasmine: {
-            src : ['src/**/*.js'],
+            src : ['src/**/*.js', 'test/helpers/**/*.js'],
             options : {
-                specs : 'test/**/*.js',
+                specs : ['test/**/*.js', '!test/helpers/**/*.js'],
                 template: require('grunt-template-jasmine-requirejs'),
                 templateOptions: {
                     requireConfig: {
