@@ -1,7 +1,7 @@
 {
-  "name": "ts_project_stub",
+  "name": "log4ts",
   "version": "1.0.0",
-  "description": "TypeScript simple project",
+  "description": "TypeScript logging library",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "grunt ts jasmine clean",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/koroandr/ts_project_stub.git"
+    "url": "https://github.com/koroandr/log4ts.git"
   },
   "keywords": [
     "typescript"
@@ -17,9 +17,9 @@
   "author": "koroandr",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/koroandr/ts_project_stub/issues"
+    "url": "https://github.com/koroandr/log4ts/issues"
   },
-  "homepage": "https://github.com/koroandr/ts_project_stub",
+  "homepage": "https://github.com/koroandr/log4ts",
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
