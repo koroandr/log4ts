@@ -31,6 +31,19 @@ export default class Logger {
         Logger.config = config;
     }
 
+    public static getLogger(tag?: string) {
+        if (!tag) {
+            return Logger.getLogger('undefined');
+        }
+        if (Logger.loggers[tag]) {
+            return Logger.loggers[tag];
+        } else {
+            return Logger.loggers[tag] = new Logger(tag);
+        }
+    }
+
+    private static loggers: {[tag: string]: Logger} = {};
+
     private doLog(level: LogLevel, message: string) {
         if (level >= Logger.config.getLevel()) {
             for (var i in Logger.config.getAppenders()) {
