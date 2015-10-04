@@ -6,9 +6,15 @@ module.exports = function(grunt) {
                 options: {
                     module: 'amd'
                 }
+            },
+            demo : {
+                src: ["src/**/*.ts", "demo/**/*.ts"],
+                options: {
+                    module: 'amd'
+                }
             }
         },
-        clean: ['src/**/*.js', 'src/**/*.js.map', 'test/**/*.js', 'test/**/*.js.map'],
+        clean: ['src/**/*.js', 'src/**/*.js.map', 'test/**/*.js', 'test/**/*.js.map', 'demo/**/*.js', 'demo/**/*.js.map'],
         jasmine: {
             src : ['src/**/*.js', 'test/helpers/**/*.js'],
             options : {
@@ -26,4 +32,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-serve');
+
+    grunt.registerTask('demo', ['ts:demo', 'serve', 'clean']);
 };

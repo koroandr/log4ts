@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <span>Send message:</span>
+        <input type="button" id="trace" value="Trace">
+        <input type="button" id="debug" value="Debug">
+        <input type="button" id="info" value="Info">
+        <input type="button" id="warn" value="Warn">
+        <input type="button" id="error" value="Error">
+        <input type="button" id="fatal" value="Fatal">
+        <br>
+        <span>Log level: </span>
+        <label><input type="radio" name="level" value="0">All</label>
+        <label><input type="radio" name="level" value="1">Trace</label>
+        <label><input type="radio" name="level" value="2">Debug</label>
+        <label><input type="radio" name="level" value="3" checked>Info</label>
+        <label><input type="radio" name="level" value="4">Warn</label>
+        <label><input type="radio" name="level" value="5">Error</label>
+        <label><input type="radio" name="level" value="6">Fatal</label>
+        <label><input type="radio" name="level" value="7">Off</label>
+        <br>
+        <span>Layout: </span>
+        <label><input type="radio" name="layout" value="basic">BasicLayout</label>
+        <br>
+        <span>Appender: </span>
+        <label><input type="radio" name="appender" value="console">ConsoleAppender</label>
+    </div>
+    <script type="text/javascript" src="../node_modules/requirejs/require.js"></script>
+    <script type="text/javascript">
+        requirejs(["Demo"], function(demo) {
+            demo.run();
+        });
+    </script>
+</body>
+</html>

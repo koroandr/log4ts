@@ -1,6 +1,6 @@
 {
   "name": "log4ts",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "TypeScript logging library",
   "main": "Gruntfile.js",
   "scripts": {
@@ -27,5 +27,9 @@
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-template-jasmine-requirejs": "^0.2.3",
     "grunt-ts": "^5.0.0-beta.5"
+  },
+  "devDependencies": {
+    "grunt-serve": "^0.1.6",
+    "requirejs": "^2.1.20"
   }
 }
