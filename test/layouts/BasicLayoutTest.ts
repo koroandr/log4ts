@@ -1,6 +1,6 @@
-///<reference path="../typings/jasmine/jasmine.d.ts" />
-import BasicLayout from "../src/layouts/BasicLayout";
-import {LogLevel} from "../src/LogLevel";
+///<reference path="../../typings/jasmine/jasmine.d.ts" />
+import BasicLayout from "../../src/layouts/BasicLayout";
+import {LogLevel} from "../../src/LogLevel";
 describe('BasicLayout', ()=>{
     var layout;
     beforeEach(()=>{

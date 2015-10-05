@@ -4,7 +4,7 @@
   "description": "TypeScript logging library",
   "main": "Gruntfile.js",
   "scripts": {
-    "test": "grunt ts jasmine; grunt clean",
+    "test": "grunt ts:default jasmine; grunt clean",
     "install": "tsd reinstall"
   },
   "repository": {
