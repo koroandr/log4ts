@@ -21,13 +21,23 @@ without implementing <code>ILayout</code> interface.
 
 ### Appenders
 
-Currently there is only one appender:
+Currently there are 2 appender:
 
-1. **ConsoleAppender** appends logs directly to your browser js console.
+#### ConsoleAppender
+**ConsoleAppender** appends logs directly to your browser js console.
+
+It has no configurable options.
+
+#### DOMAppender
+DOMAppender appends logs to some DOM element using innerHTML.
+
+It has 2 constructor parameters:
+1. id (mandatory) - id of the element logs will be attached to.
+2. escape_html (optional, defaults to false) - if set true, logs are html-escaped before being attached.
 
 ### Layouts
 
-Currently there 2 layouts:
+Currently there are 2 layouts:
 
 #### BasicLayout
 
