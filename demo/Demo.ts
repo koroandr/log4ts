@@ -5,6 +5,7 @@ import ConsoleAppender from "../src/appenders/ConsoleAppender";
 import {ILayout} from "../src/ILayout";
 import BasicLayout from "../src/layouts/BasicLayout";
 import {LogLevel} from '../src/LogLevel';
+import {default as HTMLLayout, HTMLLayoutColorTheme} from "../src/layouts/HTMLLayout";
 
 class Demo {
 
@@ -69,6 +70,9 @@ class Demo {
         switch (id) {
             case "basic":
                 this.layout = new BasicLayout();
+                break;
+            case "html":
+                this.layout = new HTMLLayout(HTMLLayoutColorTheme.SOLARIZED);
                 break;
         }
         this.appender.setLayout(this.layout);
