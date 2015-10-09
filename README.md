@@ -51,11 +51,13 @@ HTMLLayout formats time, level, tag and message in span, each with it's own colo
 You can configure colors passing to constructor either the name of the color scheme or exact color mapping.
 
 Available color themes:
+
 1. light
 2. dark
 3. solarized
 
 Color mapping fields: 
+
 1. time
 2. level
 3. tag
