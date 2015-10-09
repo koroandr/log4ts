@@ -24,7 +24,7 @@ without implementing <code>ILayout</code> interface.
 Currently there are 2 appender:
 
 #### ConsoleAppender
-**ConsoleAppender** appends logs directly to your browser js console.
+ConsoleAppender appends logs directly to your browser js console.
 
 It has no configurable options.
 
@@ -41,13 +41,13 @@ Currently there are 2 layouts:
 
 #### BasicLayout
 
-**BasicLayout** formats log entries as follows: <code>{time} {level} [{tag}] - {message}</code>
+BasicLayout formats log entries as follows: <code>{time} {level} [{tag}] - {message}</code>
 
 It has no configurable options.
 
 #### HTMLLayout
 
-**HTMLLayout** formats time, level, tag and message in span, each with it's own color.
+HTMLLayout formats time, level, tag and message in span, each with it's own color.
 You can configure colors passing to constructor either the name of the color scheme or exact color mapping.
 
 Available color themes:
