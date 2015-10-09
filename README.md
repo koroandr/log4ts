@@ -2,7 +2,11 @@
 
 Log4ts is a logging library inspired by Log4j and Log4js
 
+It's currently in develop, but I look forward to finish it in October.
 
+##Getting started
+
+TODO
 
 ## Structure
 
@@ -23,9 +27,29 @@ Currently there is only one appender:
 
 ### Layouts
 
-Currently there is only one layout:
+Currently there 2 layouts:
 
-1. **BasicLayout** formats log entries as follows: <code>{time} {level} [{tag}] - {message}</code>
+#### BasicLayout
+
+**BasicLayout** formats log entries as follows: <code>{time} {level} [{tag}] - {message}</code>
+
+It has no configurable options.
+
+#### HTMLLayout
+
+**HTMLLayout** formats time, level, tag and message in span, each with it's own color.
+You can configure colors passing to constructor either the name of the color scheme or exact color mapping.
+
+Available color themes:
+1. light
+2. dark
+3. solarized
+
+Color mapping fields: 
+1. time
+2. level
+3. tag
+4. message
 
 ## Demo
 
