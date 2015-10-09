@@ -32,6 +32,7 @@ It has no configurable options.
 DOMAppender appends logs to some DOM element using innerHTML.
 
 It has 2 constructor parameters:
+
 1. id (mandatory) - id of the element logs will be attached to.
 2. escape_html (optional, defaults to false) - if set true, logs are html-escaped before being attached.
 
