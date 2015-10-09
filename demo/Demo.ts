@@ -4,6 +4,7 @@ import {IAppender} from "../src/IAppender";
 import ConsoleAppender from "../src/appenders/ConsoleAppender";
 import {ILayout} from "../src/ILayout";
 import BasicLayout from "../src/layouts/BasicLayout";
+import DOMAppender from "../src/appenders/DOMAppender";
 import {LogLevel} from '../src/LogLevel';
 import {default as HTMLLayout, HTMLLayoutColorTheme} from "../src/layouts/HTMLLayout";
 
@@ -83,7 +84,11 @@ class Demo {
             case "console":
                 this.appender = new ConsoleAppender();
                 break;
+            case "dom":
+                this.appender = new DOMAppender('test');
+                break;
         }
+        this.appender.setLayout(this.layout);
         this.config = new LoggerConfig(this.appender, this.config.getLevel());
         Logger.setConfig(this.config);
     }
