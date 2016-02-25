@@ -1,0 +1,12 @@
+{
+  "version": "1.8.2",
+  "compilerOptions": {
+    "target": "es3",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,8 +1,6 @@
 # Log4ts
 
-Log4ts is a logging library inspired by Log4j and Log4js
-
-It's currently in develop, but I look forward to finish it in October.
+Log4ts is a client logging library inspired by Log4j and Log4js.
 
 ##Getting started
 

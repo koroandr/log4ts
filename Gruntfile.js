@@ -2,15 +2,16 @@ module.exports = function(grunt) {
     grunt.initConfig({
         ts: {
             default : {
-                src: ["src/**/*.ts", "test/**/*.ts"],
+                tsconfig: true,
                 options: {
-                    module: 'amd'
+                    compiler: './node_modules/typescript/bin/tsc'
                 }
             },
             demo : {
                 src: ["src/**/*.ts", "demo/**/*.ts"],
                 options: {
-                    module: 'amd'
+                    module: 'amd',
+                    compiler: './node_modules/typescript/bin/tsc'
                 }
             }
         },
