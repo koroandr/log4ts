@@ -4,8 +4,7 @@
   "description": "TypeScript logging library",
   "main": "index.js",
   "scripts": {
-    "test": "grunt ts:default jasmine; grunt clean",
-    "install": "tsd reinstall"
+    "test": "grunt ts:default jasmine; grunt clean"
   },
   "typescript": {
     "definition": "build/log4ts.d.ts"
