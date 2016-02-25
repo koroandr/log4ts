@@ -1,6 +1,6 @@
 {
   "name": "log4ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript logging library",
   "main": "Gruntfile.js",
   "scripts": {
@@ -23,9 +23,7 @@
     "url": "https://github.com/koroandr/log4ts/issues"
   },
   "homepage": "https://github.com/koroandr/log4ts",
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
