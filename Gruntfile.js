@@ -7,6 +7,12 @@ module.exports = function(grunt) {
                     compiler: './node_modules/typescript/bin/tsc'
                 }
             },
+            prod : {
+                tsconfig: 'tsconfig.build.json',
+                options: {
+                    compiler: './node_modules/typescript/bin/tsc'
+                }
+            },
             demo : {
                 src: ["src/**/*.ts", "demo/**/*.ts"],
                 options: {
@@ -27,13 +33,24 @@ module.exports = function(grunt) {
                     }
                 }
             }
+        },
+        dts_bundle: {
+            prod:  {
+                options: {
+                    name: 'log4ts',
+                    main: 'build/log4ts.d.ts'
+                }
+            }
         }
     });
+
     grunt.loadNpmTasks("grunt-ts");
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-serve');
+    grunt.loadNpmTasks('grunt-dts-bundle');
 
     grunt.registerTask('demo', ['ts:demo', 'serve', 'clean']);
+    grunt.registerTask('prod', ['ts:prod', 'dts_bundle:prod']);
 };

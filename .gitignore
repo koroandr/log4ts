@@ -1,3 +1,4 @@
+**/.baseDir.*
 node_modules/*
 .idea/*
 typings/*
