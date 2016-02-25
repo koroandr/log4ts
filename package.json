@@ -2,7 +2,7 @@
   "name": "log4ts",
   "version": "0.1.1",
   "description": "TypeScript logging library",
-  "main": "Gruntfile.js",
+  "main": "index.js",
   "scripts": {
     "test": "grunt ts:default jasmine; grunt clean",
     "install": "tsd reinstall"
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/koroandr/log4ts.git"
+    "url": "https://github.com/koroandr/log4ts.git"                   switche
   },
   "keywords": [
     "typescript"
