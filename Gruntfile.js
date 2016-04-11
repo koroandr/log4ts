@@ -52,5 +52,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-dts-bundle');
 
     grunt.registerTask('demo', ['ts:demo', 'serve', 'clean']);
+    grunt.registerTask('test', ['clean', 'ts:default', "jasmine", 'clean']);
     grunt.registerTask('prod', ['ts:prod', 'dts_bundle:prod']);
 };

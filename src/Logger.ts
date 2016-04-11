@@ -63,5 +63,5 @@ export default class Logger {
         }
     }
 
-    private static config: LoggerConfig;
+    private static config: LoggerConfig = new LoggerConfig();
 }
