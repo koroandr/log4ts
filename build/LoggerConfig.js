@@ -5,9 +5,10 @@ var HTMLLayout_1 = require("./layouts/HTMLLayout");
 var ConsoleAppender_1 = require("./appenders/ConsoleAppender");
 var DOMAppender_1 = require("./appenders/DOMAppender");
 var LoggerConfig = (function () {
-    function LoggerConfig(appender, level) {
+    function LoggerConfig(appender, level, tags) {
         if (level === void 0) { level = LogLevel_1.LogLevel.INFO; }
         this.level = level;
+        this.tags = tags;
         this.appenders = [];
         if (appender) {
             this.addAppender(appender);
@@ -25,8 +26,19 @@ var LoggerConfig = (function () {
     LoggerConfig.prototype.getLevel = function () {
         return this.level;
     };
+    LoggerConfig.prototype.hasTag = function (tag) {
+        if (!this.tags || this.tags.length === 0)
+            return true;
+        for (var i in this.tags) {
+            var t = this.tags[i];
+            if (t === tag) {
+                return true;
+            }
+        }
+        return false;
+    };
     LoggerConfig.createFromJson = function (json) {
-        var config = new LoggerConfig(null, LogLevel_1.LogLevel[json.level]);
+        var config = new LoggerConfig(null, LogLevel_1.LogLevel[json.level], json.tags);
         for (var _i = 0, _a = json.layouts; _i < _a.length; _i++) {
             var layout_json = _a[_i];
             var layout = void 0;

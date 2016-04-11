@@ -25,16 +25,18 @@ declare module '__log4ts/LoggerConfig' {
     import { IAppender } from "__log4ts/IAppender";
     import { LogLevel } from "__log4ts/LogLevel";
     export default class LoggerConfig {
-        constructor(appender?: IAppender, level?: LogLevel);
+        constructor(appender?: IAppender, level?: LogLevel, tags?: string[]);
         addAppender(appender: IAppender): void;
         setLevel(level: LogLevel): void;
         getAppenders(): IAppender[];
         getLevel(): LogLevel;
+        hasTag(tag: string): boolean;
         static createFromJson(json: ConfigJson): LoggerConfig;
     }
     export interface ConfigJson {
         layouts: ConfigJsonLayout[];
         level: "ALL" | "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | "OFF";
+        tags: string[];
     }
     export interface ConfigJsonLayout {
         type: "basic" | "html";

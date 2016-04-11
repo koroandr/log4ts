@@ -1,4 +1,5 @@
 "use strict";
+var LoggerConfig_1 = require("./LoggerConfig");
 var LogLevel_1 = require("./LogLevel");
 var Utils_1 = require("./Utils");
 var Logger = (function () {
@@ -44,7 +45,7 @@ var Logger = (function () {
         if (typeof object !== "undefined") {
             message += ' ' + Utils_1.stringify(object, deep || 1);
         }
-        if (level >= Logger.config.getLevel()) {
+        if (level >= Logger.config.getLevel() && Logger.config.hasTag(this.tag)) {
             for (var i in Logger.config.getAppenders()) {
                 var appender = Logger.config.getAppenders()[i];
                 appender.append({
@@ -57,6 +58,7 @@ var Logger = (function () {
         }
     };
     Logger.loggers = {};
+    Logger.config = new LoggerConfig_1["default"]();
     return Logger;
 }());
 exports.__esModule = true;
