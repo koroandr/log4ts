@@ -7,7 +7,7 @@ import HTMLLayout from "./layouts/HTMLLayout";
 import ConsoleAppender from "./appenders/ConsoleAppender";
 import DOMAppender from "./appenders/DOMAppender";
 export default class LoggerConfig {
-    constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO) {
+    constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private tags?: string[]) {
         if (appender) {
             this.addAppender(appender);
         }
@@ -28,10 +28,23 @@ export default class LoggerConfig {
         return this.level;
     }
 
+    public hasTag(tag: string) {
+        if (!this.tags || this.tags.length === 0) return true;
+
+        for (let i in this.tags) {
+            let t = this.tags[i];
+            if (t === tag) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private appenders: IAppender[] = [];
 
     public static createFromJson(json: ConfigJson): LoggerConfig {
-        let config = new LoggerConfig(null, LogLevel[json.level]);
+        let config = new LoggerConfig(null, LogLevel[json.level], json.tags);
         for (let layout_json of json.layouts) {
             let layout: ILayout;
 
@@ -71,6 +84,7 @@ export default class LoggerConfig {
 export interface ConfigJson {
     layouts: ConfigJsonLayout[];
     level: "ALL" | "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | "OFF";
+    tags: string[];
 }
 
 export interface ConfigJsonLayout {
