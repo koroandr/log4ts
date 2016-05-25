@@ -1,6 +1,6 @@
 **/.baseDir.*
-node_modules/*
+/node_modules
 .idea/*
-typings/*
-.tscache/*
+/typings
+/.tscache
 npm-debug.log

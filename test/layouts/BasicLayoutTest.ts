@@ -1,4 +1,4 @@
-///<reference path="../../typings/jasmine/jasmine.d.ts" />
+///<reference path="../../typings/globals/jasmine/index.d.ts" />
 import BasicLayout from "../../src/layouts/BasicLayout";
 import {LogLevel} from "../../src/LogLevel";
 describe('BasicLayout', ()=>{
