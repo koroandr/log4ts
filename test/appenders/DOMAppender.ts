@@ -50,7 +50,7 @@ describe('DOMAppender', ()=>{
         appender.append(helpers.createLogEntry("test2"));
         appender.append(helpers.createLogEntry("test3"));
 
-        expect(element.innerHTML).toBe('test1<br>test2<br>test3<br>');
+        expect(element.innerHTML).toBe('test1<br>test2<br>test3');
     });
     it('clears the dom', ()=>{
         element.innerHTML = 'abc<strong>test</strong>';
@@ -58,6 +58,15 @@ describe('DOMAppender', ()=>{
         appender.clear();
 
         expect(element.innerHTML).toBe('');
+    });
+    it('can limit number of entries in DOM', ()=>{
+        appender = new DOMAppender('test', true, 3);
+        appender.setLayoutFunction(d=>d.message);
+        appender.append(helpers.createLogEntry("test1"));
+        appender.append(helpers.createLogEntry("test2"));
+        appender.append(helpers.createLogEntry("test3"));
+        appender.append(helpers.createLogEntry("test4"));
+        expect(element.innerHTML).toBe('test2<br>test3<br>test4');
     });
 
 });
