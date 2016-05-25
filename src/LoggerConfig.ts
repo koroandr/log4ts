@@ -1,4 +1,3 @@
-
 import {IAppender} from "./IAppender";
 import {LogLevel} from "./LogLevel";
 import {ILayout} from "./ILayout";
@@ -6,8 +5,9 @@ import BasicLayout from "./layouts/BasicLayout";
 import HTMLLayout from "./layouts/HTMLLayout";
 import ConsoleAppender from "./appenders/ConsoleAppender";
 import DOMAppender from "./appenders/DOMAppender";
-import {HTMLLayoutColors} from "../build/layouts/HTMLLayout";
 import {HTMLLayoutColorTheme} from "./layouts/HTMLLayout";
+import {HTMLLayoutColors} from "./layouts/HTMLLayout";
+
 export default class LoggerConfig {
     constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private tags?: string[]) {
         if (appender) {

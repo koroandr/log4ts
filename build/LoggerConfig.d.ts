@@ -1,5 +1,6 @@
 import { IAppender } from "./IAppender";
 import { LogLevel } from "./LogLevel";
+import { HTMLLayoutColors } from "./layouts/HTMLLayout";
 export default class LoggerConfig {
     private level;
     private tags;
@@ -20,6 +21,10 @@ export interface ConfigJson {
 export interface ConfigJsonLayout {
     type: "basic" | "html";
     appenders: ConfigJsonAppender[];
+    options?: ConfigHtmlLayoutOptions;
+}
+export interface ConfigHtmlLayoutOptions {
+    color_scheme?: "LIGHT" | "DARK" | "SOLARIZED" | HTMLLayoutColors;
 }
 export interface ConfigJsonAppender {
     type: "console" | "dom";
@@ -28,4 +33,5 @@ export interface ConfigJsonAppender {
 export interface ConfigJsonDomAppenderOptions {
     container_id: string;
     escape_html?: boolean;
+    buffer_size?: number;
 }

@@ -8,10 +8,10 @@ module.exports = function(grunt) {
                 }
             },
             prod : {
-                tsconfig: 'tsconfig.build.json',
-                options: {
-                    compiler: './node_modules/typescript/bin/tsc'
-                }
+                tsconfig: 'tsconfig.build.json'
+                // options: {
+                //     compiler: './node_modules/typescript/bin/tsc'
+                // }
             },
             demo : {
                 src: ["src/**/*.ts", "demo/**/*.ts"],

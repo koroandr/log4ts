@@ -4,6 +4,7 @@ var BasicLayout_1 = require("./layouts/BasicLayout");
 var HTMLLayout_1 = require("./layouts/HTMLLayout");
 var ConsoleAppender_1 = require("./appenders/ConsoleAppender");
 var DOMAppender_1 = require("./appenders/DOMAppender");
+var HTMLLayout_2 = require("./layouts/HTMLLayout");
 var LoggerConfig = (function () {
     function LoggerConfig(appender, level, tags) {
         if (level === void 0) { level = LogLevel_1.LogLevel.INFO; }
@@ -47,7 +48,15 @@ var LoggerConfig = (function () {
                     layout = new BasicLayout_1["default"]();
                     break;
                 case "html":
-                    layout = new HTMLLayout_1["default"]();
+                    var color_scheme = layout_json.options && layout_json.options.color_scheme;
+                    var colors = void 0;
+                    if (typeof color_scheme === "string") {
+                        colors = HTMLLayout_2.HTMLLayoutColorTheme[color_scheme];
+                    }
+                    else {
+                        colors = color_scheme;
+                    }
+                    layout = new HTMLLayout_1["default"](colors);
                     break;
             }
             for (var _b = 0, _c = layout_json.appenders; _b < _c.length; _b++) {
@@ -59,7 +68,7 @@ var LoggerConfig = (function () {
                         break;
                     case "dom":
                         var options = appender_json.options;
-                        appender = new DOMAppender_1["default"](options.container_id, options.escape_html);
+                        appender = new DOMAppender_1["default"](options.container_id, options.escape_html, options.buffer_size);
                         break;
                 }
                 appender.setLayout(layout);

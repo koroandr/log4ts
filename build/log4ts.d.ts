@@ -24,6 +24,7 @@ declare module '__log4ts/Logger' {
 declare module '__log4ts/LoggerConfig' {
     import { IAppender } from "__log4ts/IAppender";
     import { LogLevel } from "__log4ts/LogLevel";
+    import { HTMLLayoutColors } from "__log4ts/layouts/HTMLLayout";
     export default class LoggerConfig {
         constructor(appender?: IAppender, level?: LogLevel, tags?: string[]);
         addAppender(appender: IAppender): void;
@@ -41,6 +42,10 @@ declare module '__log4ts/LoggerConfig' {
     export interface ConfigJsonLayout {
         type: "basic" | "html";
         appenders: ConfigJsonAppender[];
+        options?: ConfigHtmlLayoutOptions;
+    }
+    export interface ConfigHtmlLayoutOptions {
+        color_scheme?: "LIGHT" | "DARK" | "SOLARIZED" | HTMLLayoutColors;
     }
     export interface ConfigJsonAppender {
         type: "console" | "dom";
@@ -49,6 +54,7 @@ declare module '__log4ts/LoggerConfig' {
     export interface ConfigJsonDomAppenderOptions {
         container_id: string;
         escape_html?: boolean;
+        buffer_size?: number;
     }
 }
 
@@ -76,6 +82,26 @@ declare module '__log4ts/LogLevel' {
         OFF = 7,
     }
     export function logLevelToString(level: LogLevel): string;
+}
+
+declare module '__log4ts/layouts/HTMLLayout' {
+    import { ILayout } from "__log4ts/ILayout";
+    import { LogEntry } from "__log4ts/LogEntry";
+    export interface HTMLLayoutColors {
+        tag: string;
+        message: string;
+        time: string;
+        level: string;
+    }
+    export enum HTMLLayoutColorTheme {
+        LIGHT = 0,
+        DARK = 1,
+        SOLARIZED = 2,
+    }
+    export default class HTMLLayout implements ILayout {
+        constructor(colors_theme?: HTMLLayoutColorTheme | HTMLLayoutColors);
+        format(entry: LogEntry): string;
+    }
 }
 
 declare module '__log4ts/ILayout' {
