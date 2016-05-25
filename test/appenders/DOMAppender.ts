@@ -68,5 +68,13 @@ describe('DOMAppender', ()=>{
         appender.append(helpers.createLogEntry("test4"));
         expect(element.innerHTML).toBe('test2<br>test3<br>test4');
     });
-
+    it('works without container', ()=>{
+        expect(()=>{
+            appender = new DOMAppender('no_such_id');
+            appender.setLayoutFunction(d=>d.message);
+            appender.append(helpers.createLogEntry("test1"));
+            appender.append(helpers.createLogEntry("test2"));
+            appender.append(helpers.createLogEntry("test3"));
+        }).not.toThrow();
+    });
 });
