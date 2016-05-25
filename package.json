@@ -4,8 +4,7 @@
   "description": "TypeScript logging library",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run typings",
-    "test": "grunt ts:default jasmine; grunt clean",
+    "test": "npm run typings; grunt ts:default jasmine; grunt clean",
     "typings": "typings install"
   },
   "typescript": {
