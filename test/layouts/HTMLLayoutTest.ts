@@ -1,5 +1,3 @@
-///<reference path="../../typings/globals/jasmine/index.d.ts" />
-
 import HTMLLayout from "../../src/layouts/HTMLLayout";
 import {LogEntry} from "../../src/LogEntry";
 import {LogLevel} from "../../src/LogLevel";

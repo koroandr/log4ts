@@ -1,5 +1,3 @@
-///<reference path="../../typings/globals/jasmine/index.d.ts" />
-
 import DOMAppender from "../../src/appenders/DOMAppender";
 import * as helpers from '../helpers/TestHelpers';
 

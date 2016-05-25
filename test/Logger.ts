@@ -1,5 +1,3 @@
-///<reference path="../typings/globals/jasmine/index.d.ts" />
-
 import Logger from "../src/Logger";
 import {IAppender} from "../src/IAppender";
 import {ILayout} from "../src/ILayout";
