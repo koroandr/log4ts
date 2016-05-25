@@ -1,0 +1,7 @@
+{
+  "name": "log4ts",
+  "dependencies": {},
+  "globalDependencies": {
+    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446"
+  }
+}
