@@ -6,6 +6,8 @@ import BasicLayout from "./layouts/BasicLayout";
 import HTMLLayout from "./layouts/HTMLLayout";
 import ConsoleAppender from "./appenders/ConsoleAppender";
 import DOMAppender from "./appenders/DOMAppender";
+import {HTMLLayoutColors} from "../build/layouts/HTMLLayout";
+import {HTMLLayoutColorTheme} from "./layouts/HTMLLayout";
 export default class LoggerConfig {
     constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private tags?: string[]) {
         if (appender) {
@@ -53,7 +55,14 @@ export default class LoggerConfig {
                     layout = new BasicLayout();
                     break;
                 case "html":
-                    layout = new HTMLLayout();
+                    let color_scheme = layout_json.options && layout_json.options.color_scheme;
+                    let colors;
+                    if (typeof color_scheme === "string") {
+                        colors = HTMLLayoutColorTheme[color_scheme as string];
+                    } else {
+                        colors = color_scheme as HTMLLayoutColors;
+                    }
+                    layout = new HTMLLayout(colors);
                     break;
             }
 
@@ -66,7 +75,7 @@ export default class LoggerConfig {
                         break;
                     case "dom":
                         let options = appender_json.options as ConfigJsonDomAppenderOptions;
-                        appender = new DOMAppender(options.container_id, options.escape_html);
+                        appender = new DOMAppender(options.container_id, options.escape_html, options.buffer_size);
                         break;
 
                 }
@@ -90,6 +99,11 @@ export interface ConfigJson {
 export interface ConfigJsonLayout {
     type: "basic" | "html";
     appenders: ConfigJsonAppender[];
+    options?: ConfigHtmlLayoutOptions;
+}
+
+export interface ConfigHtmlLayoutOptions {
+    color_scheme?: "LIGHT" | "DARK" | "SOLARIZED" | HTMLLayoutColors;
 }
 
 export interface ConfigJsonAppender {
@@ -99,5 +113,6 @@ export interface ConfigJsonAppender {
 
 export interface ConfigJsonDomAppenderOptions {
     container_id: string;
-    escape_html?: boolean
+    escape_html?: boolean;
+    buffer_size?: number;
 }
