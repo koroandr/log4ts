@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run typings",
     "test": "grunt ts:default jasmine; grunt clean",
-    "typings": "tsd install"
+    "typings": "typings install"
   },
   "typescript": {
     "definition": "build/log4ts.d.ts"

@@ -1,4 +1,4 @@
-///<reference path="../../typings/jasmine/jasmine.d.ts" />
+///<reference path="../../typings/globals/jasmine/index.d.ts" />
 
 import ConsoleAppender from "../../src/appenders/ConsoleAppender";
 import * as helpers from "../helpers/TestHelpers";
