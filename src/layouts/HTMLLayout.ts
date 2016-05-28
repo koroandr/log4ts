@@ -54,6 +54,14 @@ export default class HTMLLayout implements ILayout {
             res += '<pre>' + this.formatData(entry) + '</pre>';
         }
 
+        if(entry.stack) {
+            let formatted = this.formatStack(entry.stack);
+
+            if(formatted) {
+                res += '<pre>' + formatted + '</pre>';
+            }
+        }
+
         return res;
     }
 
@@ -61,6 +69,15 @@ export default class HTMLLayout implements ILayout {
         if (typeof entry.object !== "undefined") {
             return stringify(entry.object, entry.deep || 1);
         }
+    }
+
+    private formatStack(stack: any):string {
+
+        if(stack && stack.split) {
+            return stack.split('\n').join('<br />');
+        }
+
+        return null;
     }
 
     private getTimeStyle() {

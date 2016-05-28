@@ -46,9 +46,10 @@ export default class Logger {
 
     private getStack() {
         if(Logger.config.captureStack()) {
-            let err = new Error()["stack"];
+            var err = new Error();
             return err["stack"] || err["stacktrace"];
         }
+
 
         return null;
     }
