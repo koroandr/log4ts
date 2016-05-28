@@ -12,7 +12,7 @@ export default class DOMAppender extends BaseAppender implements IAppender {
     append(entry:LogEntry) {
         if (!this.el) return;
 
-        var log = this.layout.format(entry);
+        var log = this.layout.format(entry, true);
         this.buffer.push((this.escape_html ? utils.escapeHtml(log) : log));
         if (this.buffer_size && this.buffer.length > this.buffer_size) {
             this.buffer.shift();

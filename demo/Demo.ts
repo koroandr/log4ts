@@ -14,23 +14,23 @@ class Demo {
         this.init();
 
         //Messages
-        document.getElementById("trace").addEventListener("click", ()=>{
-            this.logger.trace("Trace message");
+        document.getElementById("trace").addEventListener("click", (e)=>{
+            this.logger.trace("Trace message", e, 100);
         });
-        document.getElementById("debug").addEventListener("click", ()=>{
-            this.logger.debug("Debug message");
+        document.getElementById("debug").addEventListener("click", (e)=>{
+            this.logger.debug("Debug message", e, 100);
         });
-        document.getElementById("info").addEventListener("click", ()=>{
-            this.logger.info("Info message");
+        document.getElementById("info").addEventListener("click", (e)=>{
+            this.logger.info("Info message", e, 100);
         });
-        document.getElementById("warn").addEventListener("click", ()=>{
-            this.logger.warn("Warn message");
+        document.getElementById("warn").addEventListener("click", (e)=>{
+            this.logger.warn("Warn message", e, 100);
         });
-        document.getElementById("error").addEventListener("click", ()=>{
-            this.logger.error("Error message");
+        document.getElementById("error").addEventListener("click", (e)=>{
+            this.logger.error("Error message", e, 100);
         });
-        document.getElementById("fatal").addEventListener("click", ()=>{
-            this.logger.fatal("Fatal message");
+        document.getElementById("fatal").addEventListener("click", (e)=>{
+            this.logger.fatal("Fatal message", e, 100);
         });
 
         //Level

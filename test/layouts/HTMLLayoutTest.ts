@@ -9,18 +9,26 @@ describe('HTMLLayout', ()=>{
             message: 'test message',
             level: LogLevel.ERROR,
             tag: 'tag',
-            time: new Date(Date.parse("21 May 2015 10:12:42"))
+            time: new Date(Date.parse("21 May 2015 10:12:42")),
+            object: null,
+            deep: 1,
+            stack: {}
         };
     });
     it('by default, formats without colors', ()=>{
         var layout = new HTMLLayout();
-        expect(layout.format(log)).toEqual('<span>2015-05-21 10:12:42</span> <span>ERROR</span> <span>[tag]</span> <span>test message</span>')
+        expect(layout.format(log, false)).toEqual('<span>2015-05-21 10:12:42</span> <span>ERROR</span> <span>[tag]</span> <span>test message</span>')
+    });
+
+    it('add additional data if required', ()=>{
+        var layout = new HTMLLayout();
+        expect(layout.format(log, true)).toEqual('<span>2015-05-21 10:12:42</span> <span>ERROR</span> <span>[tag]</span> <span>test message</span><pre>{}</pre>')
     });
 
     describe('color themes', ()=>{
         var layout: HTMLLayout;
         function testColors(colors: HTMLLayoutColors) {
-            expect(layout.format(log)).toBe('<span style="color: ' + colors.time +
+            expect(layout.format(log, false)).toBe('<span style="color: ' + colors.time +
                 '">2015-05-21 10:12:42</span> <span style="color: ' + colors.level +
                 '">ERROR</span> <span style="color: ' + colors.tag +
                 '">[tag]</span> <span style="color: ' + colors.message + '">test message</span>');

@@ -19,7 +19,8 @@ describe('ConsoleAppender', ()=>{
             var log = helpers.createLogEntry('test');
 
             appender.setLayout({
-                format: (d)=>(data=d, '')
+                format: (d, i)=>(data=d, ''),
+                formatData: (d)=> ""
             });
 
             appender.append(log);
@@ -30,7 +31,7 @@ describe('ConsoleAppender', ()=>{
             var data;
             var log = helpers.createLogEntry('test');
 
-            appender.setLayoutFunction((d)=>(data=d, ''));
+            appender.setLayoutFunction((d, i)=>(data=d, ''), (d) => "");
 
             appender.append(log);
 
@@ -39,13 +40,13 @@ describe('ConsoleAppender', ()=>{
     });
 
     it('logs using window.console', ()=>{
-        appender.setLayoutFunction((d)=>d.message);
+        appender.setLayoutFunction((d,i)=>d.message, (d)=> "");
 
         appender.append(helpers.createLogEntry("1"));
         appender.append(helpers.createLogEntry("2"));
         appender.append(helpers.createLogEntry("3"));
 
-        expect(console.getLogs()).toEqual(["1", "2", "3"]);
+        expect(console.getTitles()).toEqual(["1", "2", "3"]);
     });
 
     it('can clear console', ()=>{
@@ -60,6 +61,8 @@ describe('ConsoleAppender', ()=>{
 
 class MockConsole implements Console {
     private logs: string[] = [];
+    private groups: string[] = [];
+
     public log(message: string) {
         this.logs.push(message);
     }
@@ -69,6 +72,11 @@ class MockConsole implements Console {
     getLogs() {
         return this.logs;
     }
+
+    getTitles() {
+        return this.groups;
+    }
+
     assert(test:boolean, message:string, optionalParams:any):void {
     }
 
@@ -91,6 +99,7 @@ class MockConsole implements Console {
     }
 
     groupCollapsed(groupTitle:string):void {
+        this.groups.push(groupTitle);
     }
 
     groupEnd():void {
