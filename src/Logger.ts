@@ -45,8 +45,12 @@ export default class Logger {
     private static loggers: {[tag: string]: Logger} = {};
 
     private getStack() {
-        let err = new Error()["stack"];
-        return err["stack"] || err["stacktrace"];
+        if(Logger.config.captureStack()) {
+            let err = new Error()["stack"];
+            return err["stack"] || err["stacktrace"];
+        }
+
+        return null;
     }
 
     private doLog(stack: any, level: LogLevel, message: string, object?: any, deep?: number) {

@@ -9,7 +9,7 @@ import {HTMLLayoutColorTheme} from "./layouts/HTMLLayout";
 import {HTMLLayoutColors} from "./layouts/HTMLLayout";
 
 export default class LoggerConfig {
-    constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private tags?: string[]) {
+    constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private tags?: string[], private capture_stack?: boolean) {
         if (appender) {
             this.addAppender(appender);
         }
@@ -28,6 +28,10 @@ export default class LoggerConfig {
 
     public getLevel() {
         return this.level;
+    }
+
+    public captureStack():boolean {
+        return this.capture_stack;
     }
 
     public hasTag(tag: string) {
@@ -92,6 +96,7 @@ export default class LoggerConfig {
 
 export interface ConfigJson {
     layouts: ConfigJsonLayout[];
+    capture_stack:boolean;
     level: "ALL" | "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | "OFF";
     tags: string[];
 }
