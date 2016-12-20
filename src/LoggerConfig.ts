@@ -9,7 +9,7 @@ import {HTMLLayoutColorTheme} from "./layouts/HTMLLayout";
 import {HTMLLayoutColors} from "./layouts/HTMLLayout";
 
 export default class LoggerConfig {
-    constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private tags?: string[]) {
+    constructor(appender?: IAppender, private level: LogLevel = LogLevel.INFO, private capture_stack: boolean = true, private tags?: string[]) {
         if (appender) {
             this.addAppender(appender);
         }
@@ -30,6 +30,10 @@ export default class LoggerConfig {
         return this.level;
     }
 
+    public captureStack():boolean {
+        return this.capture_stack;
+    }
+
     public hasTag(tag: string) {
         if (!this.tags || this.tags.length === 0) return true;
 
@@ -46,7 +50,7 @@ export default class LoggerConfig {
     private appenders: IAppender[] = [];
 
     public static createFromJson(json: ConfigJson): LoggerConfig {
-        let config = new LoggerConfig(null, LogLevel[json.level], json.tags);
+        let config = new LoggerConfig(null, LogLevel[json.level], json.capture_stack, json.tags);
         for (let layout_json of json.layouts) {
             let layout: ILayout;
 
@@ -92,6 +96,7 @@ export default class LoggerConfig {
 
 export interface ConfigJson {
     layouts: ConfigJsonLayout[];
+    capture_stack:boolean;
     level: "ALL" | "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | "OFF";
     tags: string[];
 }

@@ -5,6 +5,9 @@ export function createLogEntry(message: string): LogEntry {
         time: new Date(),
         message: message,
         level: LogLevel.INFO,
-        tag: 'tag'
+        tag: 'tag',
+        object: null,
+        deep: 1,
+        stack: {}
     }
 }

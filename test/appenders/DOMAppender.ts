@@ -23,7 +23,8 @@ describe('DOMAppender', ()=>{
             var log = helpers.createLogEntry('test');
 
             appender.setLayout({
-                format: (d)=>(data=d, '')
+                format: (d,i)=>(data=d, ''),
+                formatData: (d) => ''
             });
 
             appender.append(log);
@@ -34,7 +35,7 @@ describe('DOMAppender', ()=>{
             var data;
             var log = helpers.createLogEntry('test');
 
-            appender.setLayoutFunction((d)=>(data=d, ''));
+            appender.setLayoutFunction((d, i)=>(data=d, ''), (d) => "");
 
             appender.append(log);
 
@@ -43,7 +44,7 @@ describe('DOMAppender', ()=>{
     });
 
     it('appends to dom', ()=>{
-        appender.setLayoutFunction(d=>d.message);
+        appender.setLayoutFunction((d, i)=>d.message, (d) => "");
         appender.append(helpers.createLogEntry("test1"));
         appender.append(helpers.createLogEntry("test2"));
         appender.append(helpers.createLogEntry("test3"));
@@ -59,7 +60,7 @@ describe('DOMAppender', ()=>{
     });
     it('can limit number of entries in DOM', ()=>{
         appender = new DOMAppender('test', true, 3);
-        appender.setLayoutFunction(d=>d.message);
+        appender.setLayoutFunction((d, i)=>d.message, d => "");
         appender.append(helpers.createLogEntry("test1"));
         appender.append(helpers.createLogEntry("test2"));
         appender.append(helpers.createLogEntry("test3"));
@@ -69,7 +70,7 @@ describe('DOMAppender', ()=>{
     it('works without container', ()=>{
         expect(()=>{
             appender = new DOMAppender('no_such_id');
-            appender.setLayoutFunction(d=>d.message);
+            appender.setLayoutFunction((d, i)=>d.message, (d) => "");
             appender.append(helpers.createLogEntry("test1"));
             appender.append(helpers.createLogEntry("test2"));
             appender.append(helpers.createLogEntry("test3"));
