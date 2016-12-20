@@ -10,6 +10,7 @@
   "typescript": {
     "definition": "build/log4ts.d.ts"
   },
+  "typings": "build/log4ts.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/koroandr/log4ts.git"
