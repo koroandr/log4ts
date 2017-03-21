@@ -1,12 +1,12 @@
 {
-  "version": "1.8.2",
+  "version": "2.2",
   "compilerOptions": {
-    "target": "es3",
-    "module": "amd",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "test",
+    "demo"
   ]
 }
