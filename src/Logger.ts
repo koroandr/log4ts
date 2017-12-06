@@ -47,10 +47,10 @@ export default class Logger {
     private static loggers: {[tag: string]: Logger} = {};
 
     private doLog(level: LogLevel, message: string, object?: any, deep?: number) {
-        if (typeof object !== "undefined") {
-            message += ' ' + stringify(object, deep || 1);
-        }
         if (level >= Logger.config.getLevel() && Logger.config.hasTag(this.tag)) {
+            if (typeof object !== "undefined") {
+                message += ' ' + stringify(object, deep || 1);
+            }
             for (var i in Logger.config.getAppenders()) {
                 var appender = Logger.config.getAppenders()[i];
                 appender.append({
