@@ -29,6 +29,25 @@ export default class Logger {
         this.doLog(LogLevel.TRACE, message, object, deep);
     }
 
+    public isInfoEnabled(): boolean {
+        return this.canLog(LogLevel.INFO);
+    }
+    public isFatalEnabled(): boolean {
+        return this.canLog(LogLevel.FATAL);
+    }
+    public isErrorEnabled(): boolean {
+        return this.canLog(LogLevel.ERROR);
+    }
+    public isDebugEnabled(): boolean {
+        return this.canLog(LogLevel.DEBUG);
+    }
+    public isWarnEnabled(): boolean {
+        return this.canLog(LogLevel.WARN);
+    }
+    public isTraceEnabled(): boolean {
+        return this.canLog(LogLevel.TRACE);
+    }
+
     public static setConfig(config: LoggerConfig) {
         Logger.config = config;
     }
@@ -50,7 +69,7 @@ export default class Logger {
         if (typeof object !== "undefined") {
             message += ' ' + stringify(object, deep || 1);
         }
-        if (level >= Logger.config.getLevel() && Logger.config.hasTag(this.tag)) {
+        if (this.canLog(level)) {
             for (var i in Logger.config.getAppenders()) {
                 var appender = Logger.config.getAppenders()[i];
                 appender.append({
@@ -61,6 +80,10 @@ export default class Logger {
                 });
             }
         }
+    }
+
+    private canLog(level: LogLevel) {
+        return level >= Logger.config.getLevel() && Logger.config.hasTag(this.tag);
     }
 
     private static config: LoggerConfig = new LoggerConfig();
