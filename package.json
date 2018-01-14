@@ -4,8 +4,7 @@
   "description": "TypeScript logging library",
   "main": "build/log4ts.js",
   "scripts": {
-    "test": "npm run typings; grunt ts:default jasmine; grunt clean",
-    "typings": "typings install"
+    "test": "$(npm bin)/webpack --config webpack.test.config.js && $(npm bin)/jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "typescript": {
     "definition": "index.d.ts"
@@ -25,8 +24,10 @@
   },
   "homepage": "https://github.com/koroandr/log4ts",
   "devDependencies": {
-    "typescript": "^2.2.0",
+    "@types/jasmine": "^2.8.4",
+    "jasmine": "^2.8.0",
     "ts-loader": "^2.0.2",
+    "typescript": "^2.2.0",
     "webpack": "^2.3.0"
   }
 }

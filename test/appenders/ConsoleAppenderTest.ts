@@ -1,16 +1,11 @@
 import ConsoleAppender from "../../src/appenders/ConsoleAppender";
 import * as helpers from "../helpers/TestHelpers";
 describe('ConsoleAppender', ()=>{
-    var old_console,
-        console: MockConsole,
+    var console_mock: MockConsole,
         appender: ConsoleAppender;
     beforeEach(()=>{
-        old_console = window.console;
-        window.console = console = new MockConsole();
-        appender = new ConsoleAppender();
-    });
-    afterEach(()=>{
-        window.console = old_console;
+        console_mock = new MockConsole();
+        appender = new ConsoleAppender(console_mock);
     });
 
     describe('layout', ()=>{
@@ -45,15 +40,15 @@ describe('ConsoleAppender', ()=>{
         appender.append(helpers.createLogEntry("2"));
         appender.append(helpers.createLogEntry("3"));
 
-        expect(console.getLogs()).toEqual(["1", "2", "3"]);
+        expect(console_mock.getLogs()).toEqual(["1", "2", "3"]);
     });
 
     it('can clear console', ()=>{
-        console.log('111');
-        console.log('222');
-        console.log('333');
+        console_mock.log('111');
+        console_mock.log('222');
+        console_mock.log('333');
         appender.clear();
-        expect(console.getLogs().length).toBe(0);
+        expect(console_mock.getLogs().length).toBe(0);
     });
 
 });
@@ -123,5 +118,9 @@ class MockConsole implements Console {
 
     warn(message:any, optionalParams:any):void {
     }
+    exception(message?: string, optionalParams?: any): void {
+    }
 
+    table(data: any): void {
+    }
 }

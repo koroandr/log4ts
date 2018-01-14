@@ -4,3 +4,4 @@
 /typings
 /.tscache
 npm-debug.log
+/build_test

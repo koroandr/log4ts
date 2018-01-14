@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -113,7 +113,7 @@ var HTMLLayout_1 = __webpack_require__(4);
 var ConsoleAppender_1 = __webpack_require__(6);
 var DOMAppender_1 = __webpack_require__(7);
 var HTMLLayout_2 = __webpack_require__(4);
-var LoggerConfig = (function () {
+var LoggerConfig = /** @class */ (function () {
     function LoggerConfig(appender, level, tags) {
         if (level === void 0) { level = LogLevel_1.LogLevel.INFO; }
         this.level = level;
@@ -243,7 +243,7 @@ exports.stringify = stringify;
 "use strict";
 
 exports.__esModule = true;
-var BaseAppender = (function () {
+var BaseAppender = /** @class */ (function () {
     function BaseAppender() {
     }
     BaseAppender.prototype.setLayout = function (layout) {
@@ -273,7 +273,7 @@ var HTMLLayoutColorTheme;
     HTMLLayoutColorTheme[HTMLLayoutColorTheme["DARK"] = 1] = "DARK";
     HTMLLayoutColorTheme[HTMLLayoutColorTheme["SOLARIZED"] = 2] = "SOLARIZED";
 })(HTMLLayoutColorTheme = exports.HTMLLayoutColorTheme || (exports.HTMLLayoutColorTheme = {}));
-var HTMLLayout = (function () {
+var HTMLLayout = /** @class */ (function () {
     function HTMLLayout(colors_theme) {
         if (colors_theme === HTMLLayoutColorTheme.LIGHT) {
             this.colors = {
@@ -365,7 +365,7 @@ exports.__esModule = true;
 var LoggerConfig_1 = __webpack_require__(1);
 var LogLevel_1 = __webpack_require__(0);
 var Utils_1 = __webpack_require__(2);
-var Logger = (function () {
+var Logger = /** @class */ (function () {
     function Logger(tag) {
         this.tag = tag;
     }
@@ -420,10 +420,10 @@ var Logger = (function () {
             }
         }
     };
+    Logger.loggers = {};
+    Logger.config = new LoggerConfig_1["default"]();
     return Logger;
 }());
-Logger.loggers = {};
-Logger.config = new LoggerConfig_1["default"]();
 exports["default"] = Logger;
 
 
@@ -445,7 +445,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var BaseAppender_1 = __webpack_require__(3);
-var ConsoleAppender = (function (_super) {
+var ConsoleAppender = /** @class */ (function (_super) {
     __extends(ConsoleAppender, _super);
     function ConsoleAppender() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -480,7 +480,7 @@ var __extends = (this && this.__extends) || (function () {
 exports.__esModule = true;
 var BaseAppender_1 = __webpack_require__(3);
 var utils = __webpack_require__(2);
-var DOMAppender = (function (_super) {
+var DOMAppender = /** @class */ (function (_super) {
     __extends(DOMAppender, _super);
     function DOMAppender(id, escape_html, buffer_size) {
         if (escape_html === void 0) { escape_html = false; }
@@ -523,7 +523,7 @@ var LogLevel_1 = __webpack_require__(0);
  * Simple layout, that formats logs as
  * "{time} {level} [{tag}] - {message}"
  */
-var BasicLayout = (function () {
+var BasicLayout = /** @class */ (function () {
     function BasicLayout() {
     }
     BasicLayout.prototype.format = function (entry) {
